@@ -29,8 +29,8 @@
     <img src="7334409_3570349.jpg" alt="Gotcha!">
 
     <!-- Auto-Playing Prank Laughter -->
-    <audio autoplay>
-        <source src="laugh-like-crazy-257881.mp3" type="audio/mpeg">
+    <audio controls autoplay>
+    <source src="laugh-like-crazy-257881.mp3" type="audio/mpeg">
     </audio>
 </body>
 </html>
