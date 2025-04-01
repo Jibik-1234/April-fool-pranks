@@ -23,7 +23,7 @@
 </head>
 <body>
     <h1>🎉 APRIL FOOLS! 🎉</h1>
-    <p>You really thought there was a secret study hack? 😂</p>
+    <p>You’ve been pranked! 😂 Now it's your turn to prank someone else!</p>
 
     <!-- Prank Image -->
     <img src="7334409_3570349.jpg" alt="Gotcha!">
