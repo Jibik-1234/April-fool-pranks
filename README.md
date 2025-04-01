@@ -33,26 +33,29 @@
         <source src="laugh-like-crazy-257881.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Hidden Play Button (Auto-Clicks to Enable Audio) -->
-    <button id="hiddenPlay" style="display:none;">Play</button>
-
     <script>
-        window.onload = function() {
+        document.addEventListener("DOMContentLoaded", function() {
             var audio = document.getElementById("prankAudio");
 
-            // Try to play automatically
-            audio.play().catch(function(error) {
-                console.log("Autoplay blocked, requiring interaction");
+            // Try autoplaying with user interaction
+            var playAudio = function() {
+                audio.play().then(() => {
+                    console.log("Audio played automatically!");
+                }).catch(error => {
+                    console.log("Autoplay blocked, retrying...");
+                    audio.muted = true; // Start muted to allow autoplay
+                    audio.play().then(() => {
+                        audio.muted = false; // Unmute after playing starts
+                    });
+                });
+            };
 
-                // Show a button if autoplay is blocked
-                var btn = document.getElementById("hiddenPlay");
-                btn.style.display = "block";
-                btn.onclick = function() {
-                    audio.play();
-                    btn.style.display = "none"; // Hide after playing
-                };
-            });
-        };
+            // Try playing immediately
+            playAudio();
+
+            // If autoplay is blocked, try again when user interacts
+            document.body.addEventListener("click", playAudio, { once: true });
+        });
     </script>
 </body>
 </html>
