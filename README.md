@@ -25,12 +25,34 @@
     <h1>🎉 APRIL FOOLS! 🎉</h1>
     <p>You really thought there was a secret study hack? 😂</p>
 
-    <!-- Image -->
+    <!-- Prank Image -->
     <img src="7334409_3570349.jpg" alt="Gotcha!">
 
-    <!-- Auto-Playing Prank Laughter -->
-    <audio controls autoplay>
-    <source src="laugh-like-crazy-257881.mp3" type="audio/mpeg">
+    <!-- Hidden Audio -->
+    <audio id="prankAudio">
+        <source src="laugh-like-crazy-257881.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- Hidden Play Button (Auto-Clicks to Enable Audio) -->
+    <button id="hiddenPlay" style="display:none;">Play</button>
+
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById("prankAudio");
+
+            // Try to play automatically
+            audio.play().catch(function(error) {
+                console.log("Autoplay blocked, requiring interaction");
+
+                // Show a button if autoplay is blocked
+                var btn = document.getElementById("hiddenPlay");
+                btn.style.display = "block";
+                btn.onclick = function() {
+                    audio.play();
+                    btn.style.display = "none"; // Hide after playing
+                };
+            });
+        };
+    </script>
 </body>
 </html>
